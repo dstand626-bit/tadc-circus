@@ -1,0 +1,67 @@
+.page { padding: 28px 24px; max-width: 1000px; margin: 0 auto; }
+.title { font-family: 'Press Start 2P', monospace; font-size: 16px; color: #ffcc00; text-align: center; text-shadow: 0 0 20px rgba(255,204,0,0.4), 3px 0 #ff0044, -3px 0 #00e5ff; margin-bottom: 12px; }
+.subtitle { text-align: center; color: #8b7faa; font-size: 11px; margin-bottom: 20px; }
+
+/* View tabs */
+.viewTabs { display: flex; gap: 6px; justify-content: center; margin-bottom: 16px; }
+.viewTab { padding: 8px 20px; border-radius: 20px; border: 1px solid rgba(168,85,247,0.2); background: rgba(10,0,37,0.5); color: #8b7faa; font-size: 12px; cursor: pointer; transition: all 0.2s; }
+.viewTab:hover { border-color: rgba(168,85,247,0.5); }
+.viewTabActive { background: rgba(168,85,247,0.25); color: #ffcc00; border-color: rgba(255,204,0,0.3); }
+
+/* Hallway */
+.hallway { position: relative; }
+.hallwayFloor { position: absolute; bottom: 0; left: 0; right: 0; height: 40px; background: linear-gradient(180deg, transparent, rgba(168,85,247,0.05)); pointer-events: none; }
+.doorGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px; }
+.door { background: rgba(10,0,37,0.4); border: 2px solid rgba(168,85,247,0.15); border-radius: 16px 16px 0 0; padding: 0; cursor: pointer; transition: all 0.3s; overflow: hidden; }
+.door:hover { transform: translateY(-4px); border-color: var(--door-color); box-shadow: 0 8px 30px rgba(168,85,247,0.2); }
+.doorAbstracted { border-color: rgba(255,0,68,0.2); animation: abstractPulse 3s ease-in-out infinite; }
+@keyframes abstractPulse { 0%,100% { box-shadow: 0 0 0 rgba(255,0,68,0); } 50% { box-shadow: 0 0 20px rgba(255,0,68,0.15); } }
+.doorFrame { padding: 20px 12px 16px; text-align: center; }
+.doorPlate { border: 1px solid rgba(168,85,247,0.2); border-radius: 10px; padding: 12px 8px; margin-bottom: 12px; background: rgba(0,0,0,0.2); }
+.doorEmoji { font-size: 32px; display: block; margin-bottom: 4px; }
+.doorName { font-family: 'Press Start 2P', monospace; font-size: 8px; color: #e0d8f0; display: block; }
+.doorWarning { display: block; font-size: 8px; color: #ff0044; margin-top: 4px; font-family: 'Press Start 2P', monospace; animation: blink 1.5s ease-in-out infinite; }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.doorKnob { width: 10px; height: 10px; border-radius: 50%; margin: 0 auto; box-shadow: 0 0 8px currentColor; }
+
+/* Room view */
+.roomView { }
+.backBtn { padding: 8px 16px; border-radius: 10px; border: 1px solid rgba(168,85,247,0.3); background: rgba(10,0,37,0.5); color: #a855f7; font-size: 12px; cursor: pointer; margin-bottom: 12px; transition: all 0.2s; }
+.backBtn:hover { border-color: rgba(168,85,247,0.6); }
+.roomInterior { border-radius: 20px; padding: 28px; position: relative; overflow: hidden; border: 1px solid rgba(168,85,247,0.2); min-height: 400px; }
+.abstractedOverlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(255,0,0,0.02) 4px, rgba(255,0,0,0.02) 8px); animation: glitchShift 0.8s steps(3) infinite; pointer-events: none; z-index: 1; }
+@keyframes glitchShift { 0% { transform: translateX(0); } 33% { transform: translateX(-2px); } 66% { transform: translateX(2px); } 100% { transform: translateX(0); } }
+.abstractedSpikes { position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent); pointer-events: none; z-index: 1; }
+.roomHeader { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; position: relative; z-index: 2; flex-wrap: wrap; }
+.roomEmoji { font-size: 44px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.2)); }
+.roomName { font-family: 'Press Start 2P', monospace; font-size: 13px; margin: 0 0 4px 0; }
+.roomRole { font-size: 11px; color: #8b7faa; }
+.abstractedBadge { font-family: 'Press Start 2P', monospace; font-size: 8px; color: #ff0044; background: rgba(255,0,68,0.1); border: 1px solid rgba(255,0,68,0.3); border-radius: 8px; padding: 4px 10px; animation: blink 1.5s ease-in-out infinite; }
+.roomDesc { font-size: 13px; color: #c8bce4; line-height: 1.7; margin-bottom: 16px; background: rgba(0,0,0,0.3); border-radius: 12px; padding: 14px; position: relative; z-index: 2; }
+.roomFurniture { margin-bottom: 16px; position: relative; z-index: 2; }
+.roomFurnTitle { font-family: 'Press Start 2P', monospace; font-size: 9px; color: #a855f7; margin: 0 0 8px 0; }
+.roomFurnItem { background: rgba(0,0,0,0.3); border: 1px solid rgba(168,85,247,0.1); border-radius: 8px; padding: 8px 12px; margin-bottom: 4px; font-size: 12px; color: #c8bce4; }
+.furnGlitch { animation: furnFlicker 2s steps(4) infinite; border-color: rgba(255,0,68,0.15); }
+@keyframes furnFlicker { 0%,100% { opacity: 1; } 25% { opacity: 0.7; } 50% { opacity: 0.9; } 75% { opacity: 0.6; } }
+.roomQuote { font-size: 12px; color: #8b7faa; font-style: italic; border-left: 3px solid rgba(168,85,247,0.3); padding-left: 12px; position: relative; z-index: 2; }
+
+/* Your Room */
+.roomPreview { border: 2px dashed rgba(168,85,247,0.3); border-radius: 20px; padding: 40px; text-align: center; min-height: 180px; margin-bottom: 24px; transition: all 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.roomLabel { font-family: 'Press Start 2P', monospace; font-size: 10px; color: #a855f7; }
+.furnitureDisplay { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+.placedItem { font-size: 36px; animation: float 3s ease-in-out infinite; }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.emptyRoom { color: #6b5f8a; font-style: italic; font-size: 12px; }
+.sectionTitle { font-family: 'Press Start 2P', monospace; font-size: 10px; color: #a855f7; margin-bottom: 10px; }
+.wpRow { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.wpBtn { padding: 8px 14px; border-radius: 12px; border: 1px solid rgba(168,85,247,0.2); color: #b8a8d4; font-size: 11px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
+.wpBtn:hover { border-color: rgba(168,85,247,0.5); }
+.wpActive { color: #ffcc00; border-color: rgba(255,204,0,0.4); box-shadow: 0 0 12px rgba(255,204,0,0.1); }
+.furnitureGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+.furnBtn { background: rgba(10,0,37,0.5); border: 1px solid rgba(168,85,247,0.15); border-radius: 12px; padding: 12px 8px; text-align: center; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; gap: 3px; }
+.furnBtn:hover { border-color: #a855f7; }
+.furnPlaced { border-color: rgba(34,197,94,0.4); background: rgba(34,197,94,0.06); }
+.furnEmoji { font-size: 24px; }
+.furnName { font-size: 10px; color: #b8a8d4; }
+.furnStatus { font-size: 8px; color: #6b5f8a; text-transform: uppercase; letter-spacing: 1px; }
+.furnPlaced .furnStatus { color: #22c55e; }

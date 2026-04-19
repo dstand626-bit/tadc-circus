@@ -1,0 +1,89 @@
+.page { padding: 32px 24px; max-width: 1100px; margin: 0 auto; }
+.title { font-family: 'Press Start 2P', monospace; font-size: 22px; color: #ffcc00; text-align: center; text-shadow: 0 0 20px rgba(255,204,0,0.4), 3px 0 #ff0044, -3px 0 #00e5ff; margin-bottom: 8px; letter-spacing: 2px; }
+.subtitle { text-align: center; color: #8b7faa; font-size: 13px; margin-bottom: 24px; max-width: 500px; margin-left: auto; margin-right: auto; }
+.filters { display: flex; gap: 8px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; }
+.filterBtn { padding: 8px 16px; border-radius: 20px; border: 1px solid rgba(168,85,247,0.3); background: rgba(10,0,37,0.6); color: #b8a8d4; font-size: 13px; cursor: pointer; transition: all 0.2s; }
+.filterBtn:hover { border-color: rgba(168,85,247,0.6); color: #e0d8f0; }
+.filterActive { background: rgba(168,85,247,0.25); color: #ffcc00; border-color: rgba(255,204,0,0.4); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; margin-bottom: 40px; }
+.card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(10,0,37,0.7) 0%, rgba(20,0,50,0.5) 100%);
+  border: 2px solid rgba(168,85,247,0.15);
+  border-radius: 20px;
+  padding: 24px 20px 20px 32px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 80% 20%, var(--c, rgba(168,85,247,0.1)) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+  border-radius: 20px;
+}
+.card:hover::before { opacity: 0.15; }
+.card:hover {
+  border-color: var(--c);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--c) 25%, transparent), inset 0 0 20px color-mix(in srgb, var(--c) 5%, transparent);
+  transform: translateY(-4px) scale(1.02);
+}
+.cardStripe {
+  position: absolute;
+  top: 0; left: 0; width: 5px; height: 100%;
+  border-radius: 20px 0 0 20px;
+  box-shadow: 0 0 12px var(--c, rgba(168,85,247,0.4));
+}
+.cardEmoji { font-size: 44px; filter: drop-shadow(0 0 8px var(--c, rgba(168,85,247,0.4))); }
+.cardName { font-family: 'Press Start 2P', monospace; font-size: 13px; text-shadow: 0 0 8px var(--c, rgba(168,85,247,0.3)); }
+.cardRole { font-size: 13px; color: #b8a8d4; font-weight: 600; }
+.cardForm { font-size: 11px; color: #6b5f8a; font-style: italic; padding: 2px 8px; background: rgba(168,85,247,0.08); border-radius: 8px; display: inline-block; }
+.cardQuote { font-size: 12px; color: #8b7faa; font-style: italic; margin-top: 4px; padding-left: 10px; border-left: 2px solid var(--c, rgba(168,85,247,0.3)); }
+.cardRisk { font-size: 10px; color: #6b5f8a; margin-top: auto; text-transform: uppercase; letter-spacing: 1px; padding-top: 8px; border-top: 1px solid rgba(168,85,247,0.1); }
+.risklow { color: #22c55e; font-weight: 700; }
+.riskmedium { color: #eab308; font-weight: 700; }
+.riskhigh { color: #ff0044; font-weight: 700; animation: riskPulse 2s ease-in-out infinite; }
+.riskimmune { color: #00e5ff; font-weight: 700; }
+.riskabstracted { color: #666; text-decoration: line-through; }
+
+@keyframes riskPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.sectionTitle { font-family: 'Press Start 2P', monospace; font-size: 13px; color: #ff0044; text-align: center; margin-bottom: 16px; text-shadow: 0 0 10px rgba(255,0,68,0.3); }
+.abstractedRow { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 40px; }
+.abstractedChip { background: rgba(10,0,37,0.5); border: 1px solid rgba(255,0,68,0.2); border-radius: 20px; padding: 6px 14px; font-size: 12px; color: #8b7faa; transition: all 0.2s; }
+.abstractedChip:hover { border-color: rgba(255,0,68,0.5); background: rgba(255,0,68,0.05); }
+.abstractedConn { color: #ff0044; font-style: italic; }
+
+/* Modal */
+.modalOverlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 5000; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.modal { background: linear-gradient(135deg, #0a0025 0%, #120030 100%); border: 1px solid rgba(168,85,247,0.4); border-radius: 20px; padding: 28px; max-width: 600px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; }
+.modalClose { position: absolute; top: 12px; right: 16px; background: none; border: none; color: #8b7faa; font-size: 20px; cursor: pointer; z-index: 2; }
+.modalHeader { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+.modalEmoji { font-size: 52px; }
+.modalName { font-family: 'Press Start 2P', monospace; font-size: 16px; margin: 0; }
+.modalRole { font-size: 12px; color: #8b7faa; margin-top: 4px; }
+.modalCatchphrase { font-size: 11px; font-style: italic; margin-top: 6px; opacity: 0.8; }
+
+/* Modal tabs */
+.modalTabs { display: flex; gap: 6px; margin-bottom: 16px; border-bottom: 1px solid rgba(168,85,247,0.15); padding-bottom: 10px; }
+.modalTabBtn { padding: 6px 14px; border-radius: 16px; border: 1px solid rgba(168,85,247,0.2); background: rgba(10,0,37,0.5); color: #8b7faa; font-size: 11px; cursor: pointer; transition: all 0.2s; }
+.modalTabBtn:hover { border-color: rgba(168,85,247,0.5); }
+.modalTabActive { background: rgba(168,85,247,0.25); color: #ffcc00; border-color: rgba(255,204,0,0.3); }
+
+.modalSection { margin-bottom: 14px; }
+.modalSection h3 { font-size: 12px; color: #a855f7; margin: 0 0 6px 0; }
+.modalSection p { font-size: 12px; color: #c8bce4; line-height: 1.7; margin: 0; }
+.modalQuote { font-size: 12px; color: #c8bce4; font-style: italic; padding: 8px 0 8px 12px; border-left: 3px solid rgba(168,85,247,0.3); margin-bottom: 6px; }
+.modalFact { font-size: 12px; color: #c8bce4; padding: 4px 0; line-height: 1.5; }

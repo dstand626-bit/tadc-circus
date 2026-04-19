@@ -1,0 +1,58 @@
+.page { padding: 28px 24px; max-width: 900px; margin: 0 auto; text-align: center; }
+.title { font-family: 'Press Start 2P', monospace; font-size: 15px; color: #ffcc00; text-shadow: 0 0 20px rgba(255,204,0,0.4), 3px 0 #ff0044, -3px 0 #00e5ff; margin-bottom: 6px; }
+.subtitle { color: #8b7faa; font-size: 12px; margin-bottom: 8px; font-style: italic; }
+.walletBar { font-family: 'Press Start 2P', monospace; font-size: 10px; color: #e0d8f0; background: rgba(10,0,37,0.5); border: 1px solid rgba(168,85,247,0.15); border-radius: 20px; padding: 6px 16px; display: inline-block; margin-bottom: 20px; }
+
+.layout { display: flex; gap: 28px; align-items: flex-start; justify-content: center; }
+
+/* Chance sidebar */
+.chanceSidebar { width: 200px; flex-shrink: 0; background: rgba(10,0,37,0.5); border: 1px solid rgba(168,85,247,0.15); border-radius: 16px; padding: 16px; }
+.chanceTitle { font-family: 'Press Start 2P', monospace; font-size: 9px; color: #a855f7; margin: 0 0 12px 0; text-align: center; }
+.chanceItem { margin-bottom: 10px; }
+.chanceInfo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+.chanceLabel { font-size: 12px; font-weight: 700; }
+.chancePercent { font-family: 'Press Start 2P', monospace; font-size: 8px; color: #8b7faa; }
+.chanceBarBg { width: 100%; height: 8px; background: rgba(10,0,37,0.8); border-radius: 4px; overflow: hidden; border: 1px solid rgba(168,85,247,0.1); }
+.chanceBarFill { height: 100%; border-radius: 4px; transition: width 0.5s; }
+
+/* Wheel area */
+.wheelArea { display: flex; flex-direction: column; align-items: center; flex: 1; max-width: 400px; }
+.cooldownBar { background: rgba(255,0,68,0.08); border: 1px solid rgba(255,0,68,0.2); border-radius: 12px; padding: 8px 16px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #ff0044; }
+.cooldownBar strong { font-family: 'Press Start 2P', monospace; font-size: 10px; }
+.passInfo { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: 12px; padding: 6px 14px; margin-bottom: 12px; font-size: 11px; color: #22c55e; }
+.passInfo strong { font-family: 'Press Start 2P', monospace; }
+
+.wheelContainer { position: relative; width: 320px; height: 320px; margin: 0 auto 20px; }
+.pointerArrow { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); font-size: 28px; color: #ff0044; z-index: 5; filter: drop-shadow(0 0 10px rgba(255,0,68,0.7)); animation: pointerPulse 1s ease-in-out infinite; }
+@keyframes pointerPulse { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.15); } }
+.wheelSpin { width: 320px; height: 320px; border-radius: 50%; }
+.wheelCanvas { width: 320px; height: 320px; border-radius: 50%; }
+.wheelGlow { position: absolute; top: -20px; left: -20px; right: -20px; bottom: -20px; border-radius: 50%; background: radial-gradient(circle, rgba(168,85,247,0.08) 40%, transparent 70%); pointer-events: none; animation: wheelPulse 3s ease-in-out infinite; }
+@keyframes wheelPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+.btnRow { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.spinBtn { padding: 16px 36px; border-radius: 16px; border: 2px solid rgba(255,204,0,0.5); background: linear-gradient(135deg, rgba(255,204,0,0.15), rgba(168,85,247,0.15)); color: #ffcc00; font-family: 'Press Start 2P', monospace; font-size: 11px; cursor: pointer; transition: all 0.3s; text-shadow: 0 0 10px rgba(255,204,0,0.4); letter-spacing: 1px; box-shadow: 0 0 20px rgba(255,204,0,0.08); }
+.spinBtn:hover:not(:disabled) { background: linear-gradient(135deg, rgba(255,204,0,0.3), rgba(168,85,247,0.3)); transform: scale(1.08); box-shadow: 0 0 40px rgba(255,204,0,0.3); }
+.spinBtn:disabled { opacity: 0.35; cursor: not-allowed; }
+.passBtn { padding: 16px 28px; border-radius: 16px; border: 2px solid rgba(34,197,94,0.4); background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(168,85,247,0.12)); color: #22c55e; font-family: 'Press Start 2P', monospace; font-size: 11px; cursor: pointer; transition: all 0.3s; letter-spacing: 1px; box-shadow: 0 0 20px rgba(34,197,94,0.08); }
+.passBtn:hover:not(:disabled) { background: linear-gradient(135deg, rgba(34,197,94,0.3), rgba(168,85,247,0.3)); transform: scale(1.08); box-shadow: 0 0 40px rgba(34,197,94,0.2); }
+.passBtn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Result overlay */
+.resultOverlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); z-index: 9000; display: flex; align-items: center; justify-content: center; }
+.resultCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 9001; }
+.resultPopup { background: linear-gradient(135deg, #0a0025 0%, #1a0040 100%); border: 2px solid rgba(255,204,0,0.5); border-radius: 20px; padding: 32px 40px; text-align: center; animation: popIn 0.4s ease-out; max-width: 400px; box-shadow: 0 0 80px rgba(255,204,0,0.15); z-index: 9002; position: relative; overflow: hidden; }
+.resultGlow { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
+.resultTitle { font-family: 'Press Start 2P', monospace; font-size: 20px; color: #22c55e; margin-bottom: 12px; text-shadow: 0 0 20px rgba(34,197,94,0.5); position: relative; }
+.resultPrize { font-size: 36px; font-weight: 800; margin-bottom: 8px; text-shadow: 0 0 25px currentColor; position: relative; }
+.resultChance { font-size: 11px; color: #8b7faa; margin-bottom: 12px; position: relative; }
+.resultCaine { font-size: 11px; color: #ffcc00; font-style: italic; margin-bottom: 16px; position: relative; }
+.resultClose { padding: 10px 32px; border-radius: 12px; border: 2px solid rgba(34,197,94,0.4); background: rgba(34,197,94,0.15); color: #22c55e; font-family: 'Press Start 2P', monospace; font-size: 10px; cursor: pointer; transition: all 0.2s; position: relative; }
+.resultClose:hover { background: rgba(34,197,94,0.3); transform: scale(1.05); }
+
+@keyframes popIn { from { transform: scale(0.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+@media (max-width: 700px) {
+  .layout { flex-direction: column; align-items: center; }
+  .chanceSidebar { width: 100%; max-width: 320px; }
+}

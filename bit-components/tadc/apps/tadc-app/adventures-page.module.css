@@ -1,0 +1,22 @@
+.page { padding: 32px 24px; max-width: 800px; margin: 0 auto; }
+.title { font-family: 'Press Start 2P', monospace; font-size: 22px; color: #ffcc00; text-align: center; text-shadow: 0 0 20px rgba(255,204,0,0.4); margin-bottom: 8px; }
+.subtitle { text-align: center; color: #8b7faa; font-size: 14px; margin-bottom: 24px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.card { background: rgba(10,0,37,0.5); border: 1px solid rgba(168,85,247,0.15); border-radius: 14px; padding: 20px; text-align: center; cursor: pointer; transition: all 0.3s; }
+.card:hover { border-color: #a855f7; transform: translateY(-2px); }
+.cardEmoji { font-size: 36px; margin-bottom: 8px; }
+.cardName { font-family: 'Press Start 2P', monospace; font-size: 10px; color: #e0d8f0; margin-bottom: 6px; }
+.cardSource { font-size: 11px; color: #6b5f8a; }
+.scene { background: rgba(10,0,37,0.6); border: 1px solid rgba(168,85,247,0.3); border-radius: 20px; padding: 28px; }
+.sceneHeader { font-family: 'Press Start 2P', monospace; font-size: 12px; color: #a855f7; margin-bottom: 20px; }
+.sceneSpeaker { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #ffcc00; margin-bottom: 8px; font-weight: 600; }
+.sceneSpeakerEmoji { font-size: 24px; }
+.sceneText { font-size: 15px; color: #c8bce4; line-height: 1.7; margin-bottom: 24px; padding: 16px; background: rgba(168,85,247,0.06); border-radius: 12px; }
+.choices { display: flex; flex-direction: column; gap: 8px; }
+.choiceBtn { padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(168,85,247,0.3); background: rgba(168,85,247,0.08); color: #b8a8d4; font-size: 14px; cursor: pointer; text-align: left; transition: all 0.2s; }
+.choiceBtn:hover { background: rgba(168,85,247,0.2); color: #ffcc00; border-color: rgba(255,204,0,0.3); }
+.endScreen { text-align: center; padding: 20px; }
+.endTitle { font-family: 'Press Start 2P', monospace; font-size: 14px; color: #22c55e; margin-bottom: 12px; }
+.endReward { font-size: 18px; color: #ffcc00; font-weight: 700; margin-bottom: 16px; }
+.backBtn { padding: 10px 20px; border-radius: 10px; border: 1px solid rgba(168,85,247,0.3); background: rgba(10,0,37,0.5); color: #b8a8d4; font-size: 13px; cursor: pointer; }
+.backBtn:hover { color: #ffcc00; border-color: rgba(255,204,0,0.3); }

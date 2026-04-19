@@ -1,0 +1,152 @@
+.overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 10000; background: #0a0008; overflow: hidden; }
+
+/* === ALWAYS-ON EFFECTS === */
+.scanlines { position: absolute; inset: 0; z-index: 100; pointer-events: none; background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(255,0,68,0.03) 2px, rgba(255,0,68,0.03) 4px); animation: scanScroll 0.3s linear infinite; }
+@keyframes scanScroll { to { transform: translateY(4px); } }
+
+.rgbSplit { position: absolute; inset: 0; z-index: 99; pointer-events: none; background: linear-gradient(90deg, rgba(255,0,0,0.06) 0% 33%, rgba(0,255,0,0.04) 33% 66%, rgba(0,0,255,0.06) 66% 100%); mix-blend-mode: screen; }
+
+.corruptBars { position: absolute; inset: 0; z-index: 98; pointer-events: none; }
+.corruptBar { position: absolute; width: 100%; height: 2px; background: linear-gradient(90deg, transparent 0%, #ff0044 15%, #00e5ff 50%, #ffcc00 85%, transparent 100%); opacity: 0.3; animation: barSweep 0.8s linear infinite; }
+@keyframes barSweep { from { transform: translateY(-100vh); } to { transform: translateY(100vh); } }
+
+.spikes { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; background: conic-gradient(from 0deg, transparent 0deg, #ff0044 12deg, transparent 24deg, #a855f7 36deg, transparent 48deg, #00e5ff 60deg, transparent 72deg, #ffcc00 84deg, transparent 96deg, #ff0044 108deg, transparent 120deg, #a855f7 132deg, transparent 144deg, #00e5ff 156deg, transparent 168deg, #ffcc00 180deg, transparent 192deg, #ff0044 204deg, transparent 216deg, #a855f7 228deg, transparent 240deg, #00e5ff 252deg, transparent 264deg, #ffcc00 276deg, transparent 288deg, #ff0044 300deg, transparent 312deg, #a855f7 324deg, transparent 336deg, #00e5ff 348deg, transparent 360deg); clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); animation: spikeRotate 2s linear infinite; }
+@keyframes spikeRotate { to { transform: translate(-50%, -50%) rotate(360deg); } }
+
+/* === TOAST NOTIFICATION (Phase 0) === */
+.toast { position: absolute; bottom: 24px; right: 24px; z-index: 30; width: 340px; background: #2d2d30; border: 1px solid #444; border-radius: 6px; display: flex; gap: 10px; padding: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); animation: toastSlide 0.5s ease-out; }
+@keyframes toastSlide { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.toastIcon { font-size: 28px; flex-shrink: 0; }
+.toastContent { flex: 1; }
+.toastTitle { font-size: 12px; font-weight: 600; color: #e8e8e8; margin-bottom: 4px; }
+.toastBody { font-size: 11px; color: #999; line-height: 1.5; }
+.toastClose { color: #666; font-size: 14px; cursor: pointer; align-self: flex-start; }
+
+/* === VIRUS POPUPS (Phase 1-2) === */
+.popup { position: absolute; z-index: 20; width: 300px; border-radius: 3px; font-family: 'Segoe UI', Tahoma, sans-serif; animation: popIn 0.12s ease-out; box-shadow: 2px 2px 12px rgba(0,0,0,0.9); }
+@keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.popupTitleBar { display: flex; align-items: center; gap: 5px; padding: 4px 8px; font-size: 11px; font-weight: 600; }
+.sev_critical .popupTitleBar { background: #8b0000; color: white; }
+.sev_error .popupTitleBar { background: #a02020; color: white; }
+.sev_warn .popupTitleBar { background: #6b5500; color: #ffe066; }
+.sev_info .popupTitleBar { background: #1a1a2e; color: #aab; }
+.popupIcon { font-size: 12px; }
+.popupTitle { flex: 1; }
+.popupX { cursor: pointer; opacity: 0.6; margin-left: auto; }
+.popupBody { padding: 8px 10px; }
+.sev_critical .popupBody { background: #1a0000; color: #ff6666; }
+.sev_error .popupBody { background: #150505; color: #ffaaaa; }
+.sev_warn .popupBody { background: #0f0d00; color: #ffd700; }
+.sev_info .popupBody { background: #0a0a14; color: #99aacc; }
+.popupPre { margin: 0; font-family: 'Consolas', 'Courier New', monospace; font-size: 9px; white-space: pre-wrap; line-height: 1.6; }
+.popupBtns { display: flex; gap: 4px; padding: 4px 8px 6px; justify-content: flex-end; }
+.popupBtn { padding: 2px 14px; font-size: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: inherit; cursor: pointer; border-radius: 2px; }
+
+/* === TERMINAL (Phase 3) === */
+.terminal { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 30; width: 560px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 40px rgba(0,255,0,0.1); }
+.termBar { display: flex; justify-content: space-between; padding: 4px 10px; background: #2d2d30; color: #ccc; font-size: 11px; }
+.termBtns { color: #888; letter-spacing: 6px; }
+.termBody { background: #0c0c0c; padding: 12px; max-height: 350px; overflow-y: auto; font-family: 'Consolas', monospace; }
+.termLine { font-size: 11px; color: #22c55e; line-height: 1.7; animation: termFade 0.15s ease-out; }
+.termRed { color: #ff3333 !important; }
+.termYellow { color: #ffcc00 !important; font-weight: 700; }
+.termFlash { animation: flashRed 0.3s infinite !important; }
+@keyframes flashRed { 0%,100% { color: #ff0044; } 50% { color: #ffcc00; } }
+.termCursor { color: #22c55e; animation: blink 0.5s infinite; }
+@keyframes termFade { from { opacity: 0; transform: translateX(-3px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
+
+/* === DATA THEFT (Phase 4) === */
+.dataTheft { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 30; width: 480px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 40px rgba(255,0,68,0.1); }
+.dataTheftBar { display: flex; justify-content: space-between; padding: 4px 10px; background: #2d2d30; color: #ccc; font-size: 11px; }
+.dataTheftBody { background: #0c0c0c; padding: 14px; }
+.dataTheftTitle { font-family: 'Press Start 2P', monospace; font-size: 8px; color: #ff0044; margin-bottom: 8px; letter-spacing: 1px; }
+.dataTheftDest { font-size: 10px; color: #ff6666; margin-bottom: 12px; font-family: 'Consolas', monospace; }
+.dataTheftFile { display: flex; align-items: center; gap: 8px; padding: 4px 0; font-size: 10px; color: #ccc; font-family: 'Consolas', monospace; border-bottom: 1px solid rgba(255,255,255,0.04); transition: opacity 0.3s; }
+.dataTheftName { flex: 1; }
+.dataTheftSize { color: #888; min-width: 70px; text-align: right; }
+.dataTheftStatus { min-width: 50px; text-align: right; color: #22c55e; font-weight: 700; font-size: 9px; }
+.dataTheftComplete { margin-top: 10px; font-family: 'Press Start 2P', monospace; font-size: 7px; color: #ff0044; text-align: center; animation: flashRed 0.5s infinite; }
+
+/* === SCREEN CORRUPTION (Phase 5) === */
+.screenCorrupt { position: absolute; inset: 0; z-index: 30; pointer-events: none; }
+.tearBlock { position: absolute; width: 100%; background: rgba(10,0,20,0.8); border-top: 2px solid #ff0044; border-bottom: 2px solid #00e5ff; animation: tearJitter 0.1s steps(3) infinite; }
+@keyframes tearJitter { 0% { transform: translateX(0); } 33% { transform: translateX(40px); } 66% { transform: translateX(-60px); } }
+.invertPatch { position: absolute; filter: invert(1) hue-rotate(180deg); background: rgba(255,255,255,0.1); mix-blend-mode: difference; animation: invertFlicker 0.15s steps(2) infinite; }
+@keyframes invertFlicker { 0% { opacity: 0.6; } 50% { opacity: 0; } }
+.corruptText { position: absolute; top: 20%; left: 10%; font-family: 'Press Start 2P', monospace; font-size: 11px; color: #ff0044; text-shadow: 3px 0 #00e5ff, -3px 0 #ffcc00; animation: glitchText 0.1s steps(4) infinite; }
+@keyframes glitchText { 0% { transform: translate(0); } 25% { transform: translate(-5px, 2px) skewX(2deg); } 50% { transform: translate(3px, -1px) skewX(-1deg); } 75% { transform: translate(-2px, 3px) skewX(1deg); } }
+
+/* === NOTEPAD MONOLOGUE (Phase 6) === */
+.notepad { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 30; width: 520px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 50px rgba(168,85,247,0.15); }
+.notepadBar { display: flex; justify-content: space-between; padding: 4px 10px; background: #2d2d30; color: #ccc; font-size: 11px; }
+.notepadBody { background: #1e1e1e; padding: 16px; min-height: 280px; font-family: 'Consolas', monospace; }
+.notepadLine { line-height: 2; animation: notepadType 0.2s ease-out; text-shadow: 0 0 8px currentColor; }
+@keyframes notepadType { from { opacity: 0; } to { opacity: 1; } }
+.notepadCursor { color: #e0d8f0; animation: blink 0.4s infinite; font-size: 16px; }
+
+/* === RANSOMWARE (Phase 7) === */
+.ransom { position: absolute; inset: 0; z-index: 30; background: #0a0000; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px; }
+.ransomSkull { font-size: 80px; animation: ransomPulse 0.5s ease-in-out infinite; }
+@keyframes ransomPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+.ransomTitle { font-family: 'Press Start 2P', monospace; font-size: 14px; color: #ff0044; margin: 16px 0; text-align: center; text-shadow: 0 0 20px rgba(255,0,68,0.5); letter-spacing: 2px; }
+.ransomBody { font-size: 13px; color: #ff8888; max-width: 500px; text-align: center; line-height: 1.6; margin-bottom: 20px; }
+.ransomTimer { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 20px; }
+.ransomTimerLabel { font-size: 10px; color: #ff6666; }
+.ransomCountdown { font-family: 'Press Start 2P', monospace; font-size: 32px; color: #ff0044; text-shadow: 0 0 30px rgba(255,0,68,0.6); animation: ransomPulse 0.3s ease-in-out infinite; }
+.ransomPay { text-align: center; padding: 12px 20px; border: 1px solid rgba(255,204,0,0.3); border-radius: 4px; background: rgba(255,204,0,0.03); margin-bottom: 16px; font-size: 11px; color: #ffcc00; }
+.ransomAddr { font-family: 'Consolas', monospace; font-size: 9px; color: #888; margin-top: 4px; word-break: break-all; }
+.ransomWarn { font-size: 9px; color: #ff4444; text-align: center; max-width: 450px; line-height: 1.5; }
+
+/* === FAKE CAPTCHA (Phase 8) === */
+.captchaWrap { position: absolute; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; animation: captchaGlitch 0.2s steps(2) infinite; }
+@keyframes captchaGlitch { 0%,100% { transform: translate(0); } 25% { transform: translate(-2px, 1px) skewX(0.5deg); } 75% { transform: translate(2px, -1px) skewX(-0.3deg); } }
+.captchaWindow { width: 400px; border-radius: 4px; overflow: hidden; box-shadow: 0 0 60px rgba(255,0,68,0.3); }
+.captchaBar { display: flex; justify-content: space-between; padding: 5px 10px; background: #333; color: #ccc; font-size: 11px; }
+.captchaInner { background: #1a0000; padding: 24px; text-align: center; }
+.captchaHeading { font-family: 'Press Start 2P', monospace; font-size: 11px; color: #ff0044; margin-bottom: 16px; text-shadow: 2px 0 #00e5ff, -2px 0 #ffcc00; }
+.captchaCheckRow { display: flex; align-items: center; gap: 10px; justify-content: center; background: rgba(40,0,0,0.6); border: 1px solid rgba(255,0,68,0.2); border-radius: 3px; padding: 10px 16px; margin-bottom: 12px; color: #e0d8f0; font-size: 13px; }
+.captchaCheck { font-size: 20px; color: #ff0044; animation: checkFlick 0.15s infinite; }
+@keyframes checkFlick { 0%,100% { opacity: 1; } 50% { opacity: 0.2; } }
+.captchaFail { font-family: 'Press Start 2P', monospace; font-size: 12px; color: #ff0044; margin-bottom: 6px; text-shadow: 0 0 20px rgba(255,0,68,0.5); }
+.captchaResult { font-size: 9px; color: #ff6666; margin-bottom: 8px; }
+.captchaSub { font-size: 9px; color: #6b5f8a; font-style: italic; }
+
+/* === MEMZ FINALE (Phase 9) === */
+.memz { position: absolute; inset: 0; z-index: 30; overflow: hidden; }
+.memzInvert { position: absolute; inset: 0; animation: memzInvert 0.1s steps(2) infinite; }
+@keyframes memzInvert { 0% { filter: invert(0) hue-rotate(0); background: transparent; } 25% { filter: invert(1) hue-rotate(90deg); background: rgba(255,0,0,0.1); } 50% { filter: invert(0) hue-rotate(180deg); background: rgba(0,255,0,0.1); } 75% { filter: invert(1) hue-rotate(270deg); background: rgba(0,0,255,0.1); } }
+.memzRotate { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Press Start 2P', monospace; font-size: 10px; color: #ff0044; text-align: center; animation: memzSpin 0.3s linear infinite; text-shadow: 0 0 20px #ff0044; }
+@keyframes memzSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+.memzNyan { position: absolute; top: 30%; animation: memzNyanMove 0.5s linear infinite; font-size: 30px; }
+@keyframes memzNyanMove { from { left: -200px; } to { left: 110%; } }
+.memzText1, .memzText2, .memzText3 { position: absolute; font-family: 'Press Start 2P', monospace; color: #ff0044; animation: memzFlash 0.1s infinite; }
+.memzText1 { top: 15%; left: 10%; font-size: 18px; text-shadow: 0 0 30px #ff0044; }
+.memzText2 { top: 65%; right: 5%; font-size: 14px; text-shadow: 0 0 30px #a855f7; color: #a855f7; }
+.memzText3 { bottom: 15%; left: 20%; font-size: 16px; text-shadow: 0 0 30px #ffcc00; color: #ffcc00; }
+@keyframes memzFlash { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+.memzBlock { position: absolute; animation: memzBlockFlash 0.15s steps(2) infinite; }
+@keyframes memzBlockFlash { 0% { opacity: 0.4; transform: scale(1); } 50% { opacity: 0; transform: scale(0.8); } }
+
+/* === BSOD (Phase 10) === */
+.bsod { position: absolute; inset: 0; z-index: 50; background: #0078d7; display: flex; flex-direction: column; justify-content: center; padding: 10% 15%; animation: bsodIn 0.4s; }
+@keyframes bsodIn { from { opacity: 0; } to { opacity: 1; } }
+.bsodFace { font-size: 80px; color: white; margin-bottom: 14px; }
+.bsodMain { font-size: 17px; color: white; margin-bottom: 10px; line-height: 1.5; }
+.bsodSub { font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 14px; }
+.bsodPct { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
+.bsodStop { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
+.bsodWhat { font-size: 11px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+.bsodHex { font-size: 9px; color: rgba(255,255,255,0.3); font-family: 'Consolas', monospace; margin-bottom: 6px; }
+.bsodFile { font-size: 9px; color: rgba(255,255,255,0.4); font-family: 'Consolas', monospace; margin-bottom: 2px; }
+.bsodBtn { margin-top: 20px; padding: 10px 24px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.3); color: white; font-family: 'Press Start 2P', monospace; font-size: 9px; cursor: pointer; border-radius: 3px; align-self: flex-start; }
+.bsodBtn:hover { background: rgba(255,255,255,0.25); }
+
+/* === ERROR BAR === */
+.errorBar { position: absolute; bottom: 0; left: 0; width: 100%; z-index: 55; background: rgba(15,0,0,0.95); border-top: 1px solid #ff0044; padding: 5px 12px; font-family: 'Consolas', monospace; font-size: 9px; color: #ff4444; letter-spacing: 1px; animation: errorPulse 0.8s infinite; }
+@keyframes errorPulse { 0%,49% { opacity: 0.7; } 50%,100% { opacity: 0.3; } }
+
+/* === ESC BUTTON === */
+.escBtn { position: absolute; top: 10px; right: 14px; z-index: 60; background: rgba(255,0,68,0.06); border: 1px solid rgba(255,0,68,0.4); color: #ff0044; padding: 7px 14px; font-family: 'Press Start 2P', monospace; font-size: 7px; cursor: pointer; border-radius: 3px; animation: escBlink 0.4s infinite; }
+@keyframes escBlink { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+.escBtn:hover { background: rgba(255,0,68,0.15); box-shadow: 0 0 14px rgba(255,0,68,0.2); }

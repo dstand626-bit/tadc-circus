@@ -1,0 +1,599 @@
+.app {
+  display: block;
+  min-height: 100vh;
+  background: #040010;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  max-height: 100vh;
+  background: linear-gradient(180deg, #0a0025 0%, #120030 50%, #0a0025 100%);
+  border-right: 1px solid rgba(168, 85, 247, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.logo {
+  padding: 24px 16px 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.logoEmoji {
+  font-size: 32px;
+  display: inline-block;
+  margin-bottom: 6px;
+  animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logoTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: #ffcc00;
+  line-height: 1.6;
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+  letter-spacing: 0.5px;
+}
+
+.logoSubtitle {
+  font-size: 10px;
+  color: rgba(168, 85, 247, 0.6);
+  margin-top: 4px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 6px;
+}
+
+.wallet {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+}
+
+.walletItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.coins { color: #ffcc00; }
+.gems { color: #00e5ff; }
+
+.nav {
+  flex: 1;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #b8a8d4;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.navLink:hover {
+  background: rgba(168, 85, 247, 0.12);
+  color: #e0d8f0;
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.navLinkActive {
+  background: rgba(168, 85, 247, 0.2);
+  color: #ffcc00;
+  border-color: rgba(255, 204, 0, 0.3);
+  text-shadow: 0 0 8px rgba(255, 204, 0, 0.3);
+}
+
+.navEmoji {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.glitchBtn {
+  margin: 8px 12px 16px;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(255, 0, 68, 0.2), rgba(168, 85, 247, 0.2));
+  border: 1px solid rgba(255, 0, 68, 0.4);
+  border-radius: 10px;
+  color: #ff0044;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s;
+  letter-spacing: 0.5px;
+}
+
+.glitchBtn:hover {
+  background: linear-gradient(135deg, rgba(255, 0, 68, 0.4), rgba(168, 85, 247, 0.4));
+  box-shadow: 0 0 20px rgba(255, 0, 68, 0.3);
+  transform: scale(1.02);
+}
+
+/* === MAIN CONTENT === */
+.main {
+  margin-left: 220px;
+  min-height: 100vh;
+}
+
+/* === COMING SOON PAGE === */
+.comingSoon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  gap: 16px;
+}
+
+.comingSoonEmoji {
+  font-size: 64px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.comingSoonTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 18px;
+  color: #ffcc00;
+  text-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+}
+
+.comingSoonText {
+  color: #8b7faa;
+  font-size: 15px;
+  max-width: 400px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* === GLITCH OVERLAY — VIRUS MODE === */
+.glitchOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: glitchShake 0.08s infinite;
+  overflow: hidden;
+}
+
+.glitchText {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 16px;
+  color: #ff0044;
+  text-align: center;
+  text-shadow:
+    4px 0 #00e5ff,
+    -4px 0 #ffcc00,
+    0 0 30px #ff0044,
+    0 0 60px rgba(255, 0, 68, 0.5);
+  line-height: 2.8;
+  animation: glitchFlicker 0.06s infinite, glitchRGB 0.15s infinite;
+  max-width: 80%;
+  position: relative;
+  z-index: 3;
+}
+
+.glitchScanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 0, 68, 0.06) 1px,
+    rgba(255, 0, 68, 0.06) 3px
+  );
+  pointer-events: none;
+  z-index: 2;
+  animation: scanlineScroll 0.5s linear infinite;
+}
+
+.glitchBars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+  background:
+    linear-gradient(transparent 0%, transparent 45%, rgba(255, 0, 68, 0.15) 45.5%, rgba(255, 0, 68, 0.15) 46%, transparent 46.5%, transparent 100%),
+    linear-gradient(transparent 0%, transparent 72%, rgba(0, 229, 255, 0.1) 72.5%, rgba(0, 229, 255, 0.1) 73%, transparent 73.5%, transparent 100%);
+  animation: glitchBarsMove 0.3s infinite;
+}
+
+.glitchSpikes {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  opacity: 0.15;
+  animation: spikesPulse 0.8s ease-in-out infinite;
+}
+
+.glitchSpikes::before,
+.glitchSpikes::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    #ff0044 20deg,
+    transparent 40deg,
+    #a855f7 60deg,
+    transparent 80deg,
+    #00e5ff 100deg,
+    transparent 120deg,
+    #ffcc00 140deg,
+    transparent 160deg,
+    #ff0044 180deg,
+    transparent 200deg,
+    #a855f7 220deg,
+    transparent 240deg,
+    #00e5ff 260deg,
+    transparent 280deg,
+    #ffcc00 300deg,
+    transparent 320deg,
+    #ff0044 340deg,
+    transparent 360deg
+  );
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: spikesRotate 2s linear infinite;
+}
+
+.glitchSpikes::after {
+  animation-direction: reverse;
+  opacity: 0.7;
+  transform: translate(-50%, -50%) scale(1.5);
+}
+
+.glitchCorrupt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: screen;
+}
+
+.glitchCorruptBar {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ff0044, #00e5ff, #ffcc00, transparent);
+  animation: corruptBarSweep 1.5s linear infinite;
+  opacity: 0.6;
+}
+
+.glitchBsod {
+  position: absolute;
+  bottom: 30px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: rgba(255, 0, 68, 0.5);
+  letter-spacing: 2px;
+  z-index: 6;
+  text-shadow: 0 0 10px rgba(255, 0, 68, 0.3);
+  animation: bsodBlink 1s infinite;
+}
+
+.glitchClose {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  background: rgba(255, 0, 68, 0.1);
+  border: 1px solid rgba(255, 0, 68, 0.6);
+  color: #ff0044;
+  padding: 8px 16px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 10;
+  animation: glitchFlicker 0.3s infinite;
+}
+
+.glitchClose:hover {
+  background: rgba(255, 0, 68, 0.3);
+  box-shadow: 0 0 20px rgba(255, 0, 68, 0.4);
+}
+
+@keyframes glitchShake {
+  0% { transform: translate(0); }
+  10% { transform: translate(-3px, 2px) skewX(0.5deg); }
+  20% { transform: translate(4px, -1px) skewX(-0.3deg); }
+  30% { transform: translate(-1px, 3px); }
+  40% { transform: translate(2px, -3px) skewX(0.8deg); }
+  50% { transform: translate(-4px, 1px) skewX(-0.5deg); }
+  60% { transform: translate(3px, -2px); }
+  70% { transform: translate(-2px, 4px) skewX(0.3deg); }
+  80% { transform: translate(1px, -1px) skewX(-0.8deg); }
+  90% { transform: translate(-3px, 2px); }
+  100% { transform: translate(2px, -3px) skewX(0.5deg); }
+}
+
+@keyframes glitchFlicker {
+  0% { opacity: 1; }
+  5% { opacity: 0.3; }
+  10% { opacity: 1; }
+  15% { opacity: 0.7; }
+  20% { opacity: 1; }
+  50% { opacity: 0.9; }
+  55% { opacity: 0.4; }
+  60% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes glitchRGB {
+  0% { text-shadow: 4px 0 #00e5ff, -4px 0 #ffcc00, 0 0 30px #ff0044; }
+  25% { text-shadow: -3px 2px #00e5ff, 3px -2px #ffcc00, 0 0 40px #ff0044; }
+  50% { text-shadow: 5px -1px #00e5ff, -5px 1px #ffcc00, 0 0 20px #ff0044; }
+  75% { text-shadow: -2px -3px #00e5ff, 2px 3px #ffcc00, 0 0 50px #ff0044; }
+  100% { text-shadow: 4px 0 #00e5ff, -4px 0 #ffcc00, 0 0 30px #ff0044; }
+}
+
+@keyframes scanlineScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes glitchBarsMove {
+  0% { background-position: 0 0, 0 0; }
+  50% { background-position: 0 20%, 0 -15%; }
+  100% { background-position: 0 0, 0 0; }
+}
+
+@keyframes spikesPulse {
+  0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.25; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+@keyframes spikesRotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes corruptBarSweep {
+  0% { top: -5%; }
+  100% { top: 105%; }
+}
+
+@keyframes bsodBlink {
+  0%, 49% { opacity: 0.5; }
+  50%, 100% { opacity: 0.2; }
+}
+
+/* Virus popup windows */
+.virusPopup {
+  position: absolute;
+  z-index: 8;
+  border-radius: 6px;
+  padding: 12px 16px;
+  min-width: 240px;
+  font-family: 'Courier New', monospace;
+  animation: virusPopIn 0.2s ease-out;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+}
+.virusError {
+  background: rgba(40, 0, 0, 0.95);
+  border: 2px solid #ff0044;
+}
+.virusWarn {
+  background: rgba(40, 30, 0, 0.95);
+  border: 2px solid #ffcc00;
+}
+.virusPopupTitle { font-size: 11px; font-weight: 700; margin-bottom: 6px; }
+.virusError .virusPopupTitle { color: #ff0044; }
+.virusWarn .virusPopupTitle { color: #ffcc00; }
+.virusPopupMsg { font-size: 10px; color: #c8bce4; margin-bottom: 8px; line-height: 1.4; }
+.virusPopupBtn { font-size: 9px; color: #8b7faa; text-align: right; }
+
+@keyframes virusPopIn {
+  from { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* BSOD Screen */
+.bsodScreen {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #0078d7;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10% 15%;
+  animation: bsodFadeIn 0.5s ease-out;
+}
+.bsodFace { font-size: 80px; color: white; margin-bottom: 20px; }
+.bsodTitle { font-size: 18px; color: white; margin-bottom: 16px; line-height: 1.5; }
+.bsodError { font-size: 12px; color: rgba(255,255,255,0.7); margin-bottom: 20px; }
+.bsodInfo { font-size: 10px; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
+.bsodPercent { font-size: 10px; color: rgba(255,255,255,0.5); }
+.bsodClose {
+  margin-top: 24px;
+  padding: 10px 24px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.bsodClose:hover { background: rgba(255,255,255,0.3); }
+
+/* Glitch fade out recovery */
+.glitchRecovery {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 10001;
+  background: black;
+  animation: recoveryFade 2s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes recoveryFade {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes bsodFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Fake CAPTCHA phase */
+.fakeCaptcha {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(20, 0, 0, 0.95);
+  border: 2px solid #ff0044;
+  border-radius: 8px;
+  padding: 32px 40px;
+  text-align: center;
+  z-index: 20;
+  animation: captchaGlitch 0.3s steps(2) infinite;
+  box-shadow: 0 0 60px rgba(255, 0, 68, 0.4);
+}
+.captchaTitle {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 12px;
+  color: #ff0044;
+  margin-bottom: 20px;
+  text-shadow: 3px 0 #00e5ff, -3px 0 #ffcc00;
+}
+.captchaBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  background: rgba(40, 0, 0, 0.8);
+  border: 1px solid rgba(255, 0, 68, 0.3);
+  border-radius: 4px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+}
+.captchaCheck {
+  font-size: 24px;
+  color: #ff0044;
+  animation: captchaFlicker 0.2s infinite;
+}
+.captchaLabel {
+  font-size: 14px;
+  color: #e0d8f0;
+}
+.captchaSmall {
+  font-size: 10px;
+  color: #8b7faa;
+  font-style: italic;
+}
+@keyframes captchaGlitch {
+  0% { transform: translate(-50%, -50%); }
+  25% { transform: translate(-51%, -49%) skewX(0.5deg); }
+  50% { transform: translate(-49%, -51%) skewX(-0.3deg); }
+  75% { transform: translate(-50%, -50%) skewX(0.8deg); }
+  100% { transform: translate(-50%, -50%); }
+}
+@keyframes captchaFlicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* === POPUP QUOTE === */
+.popupQuote {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9000;
+  background: linear-gradient(135deg, rgba(10, 0, 37, 0.95), rgba(18, 0, 48, 0.95));
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  border-radius: 16px;
+  padding: 16px 20px;
+  max-width: 340px;
+  backdrop-filter: blur(20px);
+  animation: slideUp 0.4s ease-out;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.popupQuoteText {
+  font-size: 13px;
+  color: #e0d8f0;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.popupQuoteAuthor {
+  font-size: 11px;
+  color: #ffcc00;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.popupQuoteClose {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #8b7faa;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
